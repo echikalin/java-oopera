@@ -1,38 +1,14 @@
 import java.util.ArrayList;
 
 public class Show {
-    private String title;
-    private int duration;
-    private String director;
-    static ArrayList<Actor> listOfActors = new ArrayList<>();
+    String title;
+    int duration;
+    Director director;
+    ArrayList<Actor> listOfActors = new ArrayList<>();
 
-    public Show(String title, int duration, String director) {
+    public Show(String title, int duration, Director director) {
         this.title = title;
         this.duration = duration;
-        this.director = director;
-    }
-
-    public String getTitle() {
-        return title;
-    }
-
-    public void setTitle(String title) {
-        this.title = title;
-    }
-
-    public int getDuration() {
-        return duration;
-    }
-
-    public void setDuration(int duration) {
-        this.duration = duration;
-    }
-
-    public String getDirector() {
-        return director;
-    }
-
-    public void setDirector(String director) {
         this.director = director;
     }
 
@@ -42,7 +18,7 @@ public class Show {
         }
     }
 
-    public static void addActor(Actor actor) {
+    public void addActor(Actor actor) {
         for (Actor currentActor : listOfActors) {
             if (currentActor.equals(actor)) {
                 System.out.println("Такой актёр уже присутствует в списке!");
@@ -52,13 +28,19 @@ public class Show {
         listOfActors.add(actor);
     }
 
-    public static void replaceActor(Actor actor, Actor newActor) {
-        for (Actor currentActor : listOfActors) {
-            if (currentActor.equals(actor)) {
-                listOfActors.remove(actor);
-                listOfActors.add(newActor);
-                return;
+    public void replaceActor(Actor actor, Actor newActor) {
+        int index = -1;
+        for (int i = 0; i < listOfActors.size(); i++) {
+            if (listOfActors.get(i).equals(actor)) {
+                index = i;
+                break;
             }
+        }
+        if (index > -1) {
+            listOfActors.set(index, newActor);
+            System.out.println("Актёр " + actor + " заменён на " + newActor + "!");
+        } else {
+            System.out.println("Такого актёра нет в списке.");
         }
     }
 }

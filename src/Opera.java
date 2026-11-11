@@ -1,16 +1,10 @@
 public class Opera extends MusicalShow {
-    private String choirSize;
+    int choirSize;
 
-    public Opera(MusicalShow musicalShow, String choirSize) {
-        super(musicalShow.musicAuthor, musicalShow.librettoText);
-        this.choirSize = choirSize;
-    }
-
-    public String getChoirSize() {
-        return choirSize;
-    }
-
-    public void setChoirSize(String choirSize) {
+    public Opera(String title, int duration,
+                 Director director, String musicAuthor,
+                 String librettoText, int choirSize) {
+        super(title, duration, director, musicAuthor, librettoText);
         this.choirSize = choirSize;
     }
 }
